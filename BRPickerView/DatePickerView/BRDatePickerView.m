@@ -1209,6 +1209,16 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     return self.pickerStyle.rowHeight;
 }
 
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+// 这里返回的是component的宽度,即每列的宽度
+    BOOL flag = (self.pickerMode == BRDatePickerModeYM ||self.pickerMode == BRDatePickerModeMD||self.pickerMode == BRDatePickerModeHM||self.pickerMode == BRDatePickerModeMS);
+    if (flag){
+        return 100;
+    }else{
+        return 80;
+    }
+}
+
 #pragma mark - 日期选择器1 滚动后的响应事件
 - (void)didSelectValueChanged:(UIDatePicker *)sender {
     // 读取日期：datePicker.date
